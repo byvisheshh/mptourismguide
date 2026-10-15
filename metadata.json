@@ -1,0 +1,6 @@
+{
+  "name": "MP Tourism - The Heart of Incredible India",
+  "description": "Comprehensive official tourism portal for Madhya Pradesh featuring verified heritage, spiritual jyotirlingas, national parks, authentic cuisine, and curated itineraries.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
