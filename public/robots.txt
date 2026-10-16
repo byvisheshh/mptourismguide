@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/private
 
-Sitemap: https://mptourism.gov.in/sitemap.xml
+Sitemap: https://mptourismguide.vercel.app/sitemap.xml

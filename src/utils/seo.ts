@@ -14,7 +14,9 @@ export function updatePageSeo(seo: SeoMeta, canonicalPath: string, schemaData?: 
   metaDesc.setAttribute('content', seo.metaDescription);
 
   // 3. Update OpenGraph Tags
-  const fullUrl = typeof window !== 'undefined' ? `${window.location.origin}${canonicalPath}` : `https://mptourism.gov.in${canonicalPath}`;
+  const fullUrl = typeof window !== 'undefined' && window.location.origin && window.location.origin !== 'null'
+    ? `${window.location.origin}${canonicalPath}`
+    : `https://mptourismguide.vercel.app${canonicalPath}`;
 
   const setMetaProperty = (property: string, content: string) => {
     let el = document.querySelector(`meta[property="${property}"]`);
