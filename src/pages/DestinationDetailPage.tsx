@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Destination } from '../types';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { FaqSection } from '../components/FaqSection';
-import { updatePageSeo } from '../utils/seo';
+import { updatePageSeo, PRIMARY_CANONICAL_DOMAIN } from '../utils/seo';
 import {
   MapPin,
   Calendar,
@@ -43,21 +43,72 @@ export const DestinationDetailPage: React.FC<DestinationDetailPageProps> = ({
 
   // Synchronize SEO & Schema.org JSON-LD
   useEffect(() => {
+    const canonicalUrl = `${PRIMARY_CANONICAL_DOMAIN}/destinations/${destination.slug}`;
+    const absoluteImage = `${PRIMARY_CANONICAL_DOMAIN}${destination.image}`;
+
     const schemaData = {
       '@context': 'https://schema.org',
-      '@type': 'TouristAttraction',
-      name: destination.name,
-      description: destination.summary,
-      image: destination.image,
-      address: {
-        '@type': 'PostalAddress',
-        addressRegion: 'Madhya Pradesh',
-        addressCountry: 'IN',
-      },
-      isAccessibleForFree: destination.entryAndTiming.fees.toLowerCase().includes('free'),
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Destinations',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/destinations`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: destination.name,
+              item: canonicalUrl,
+            },
+          ],
+        },
+        {
+          '@type': 'TouristAttraction',
+          '@id': `${canonicalUrl}#attraction`,
+          name: destination.name,
+          description: destination.summary,
+          image: absoluteImage,
+          url: canonicalUrl,
+          touristType: destination.category,
+          isAccessibleForFree: destination.entryAndTiming.fees.toLowerCase().includes('free'),
+          publicAccess: true,
+          address: {
+            '@type': 'PostalAddress',
+            addressRegion: 'Madhya Pradesh',
+            addressCountry: 'IN',
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': `${canonicalUrl}#faq`,
+          mainEntity: destination.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.answer,
+            },
+          })),
+        },
+      ],
     };
 
-    updatePageSeo(destination.seo, `/destinations/${destination.slug}`, schemaData);
+    updatePageSeo(
+      destination.seo,
+      `/destinations/${destination.slug}`,
+      schemaData,
+      destination.image
+    );
     window.scrollTo(0, 0);
   }, [destination]);
 

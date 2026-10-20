@@ -98,14 +98,34 @@ export const travelItineraries: TravelItinerary[] = [
     faqs: [
       {
         question: 'Is 7 days sufficient to see Madhya Pradesh?',
-        answer: 'Yes! 7 days provides an ideal introduction to the state’s premier highlights by combining Bhopal’s UNESCO monuments, Jabalpur’s river wonders, Bandhavgarh tigers, and Khajuraho temples.'
+        answer: 'Yes! 7 days provides an ideal introduction to the state’s premier highlights by combining Bhopal’s twin UNESCO monuments (Sanchi and Bhimbetka), Jabalpur’s Bhedaghat Marble Rocks, Bandhavgarh tiger safaris, and Khajuraho’s world-renowned temples.'
+      },
+      {
+        question: 'What is the best starting and ending city for a 7-day MP itinerary?',
+        answer: 'Starting in Bhopal (well-connected by air and Vande Bharat trains from Delhi and Mumbai) and concluding in Khajuraho (with direct flights to Delhi) minimizes backtrack travel and saves over 12 hours of highway transit.'
+      },
+      {
+        question: 'How do you travel between Bhopal, Jabalpur, Bandhavgarh, and Khajuraho?',
+        answer: 'We recommend taking the high-speed Vande Bharat or Jan Shatabdi Express train between Bhopal and Jabalpur (approx. 4 hours), followed by a chauffeured private air-conditioned vehicle for the forest leg to Bandhavgarh (3.5 hours) and onward to Khajuraho (5 hours).'
+      },
+      {
+        question: 'What is the estimated budget for a 7-day Madhya Pradesh trip?',
+        answer: 'A comfortable mid-range budget is ₹6,000 to ₹9,000 per person per day including private transport, 3-to-4-star heritage stays, two jungle safaris, entrance tickets, and authentic regional meals.'
+      },
+      {
+        question: 'When is the best season to do this 7-day tour circuit?',
+        answer: 'October to March offers cool, pleasant weather (12°C–28°C) across all heritage cities and open-jeep forest safaris. Wildlife viewing peaks from March to May when animals congregate around waterholes.'
+      },
+      {
+        question: 'How far in advance should I book Bandhavgarh tiger safari permits?',
+        answer: 'Book your core zone safari permits (especially Tala and Magdhi zones) 60 to 90 days in advance via mponline.gov.in, as daily vehicle quotas are strictly limited by the MP Forest Department.'
       }
     ],
     seo: {
-      primaryKeyword: 'Madhya Pradesh travel itinerary',
-      secondaryKeywords: ['Madhya Pradesh trip plan', 'Madhya Pradesh tourist places'],
-      title: '7-Day Madhya Pradesh Itinerary: Complete Week Trip Plan',
-      metaDescription: 'Discover the ultimate 7-day Madhya Pradesh travel itinerary. Balanced route combining Bhopal, Sanchi, Bhimbetka, Bandhavgarh tigers, and Khajuraho temples.'
+      primaryKeyword: '7 day Madhya Pradesh itinerary',
+      secondaryKeywords: ['Madhya Pradesh travel itinerary', 'Madhya Pradesh 1 week trip plan'],
+      title: '7-Day Madhya Pradesh Itinerary: Complete 1-Week Travel Route',
+      metaDescription: 'Discover the ultimate 7-day Madhya Pradesh travel itinerary. Complete route combining Bhopal, Sanchi Stupa, Bhimbetka, Bandhavgarh tiger safaris, and Khajuraho temples.'
     }
   },
   {
@@ -166,14 +186,34 @@ export const travelItineraries: TravelItinerary[] = [
     faqs: [
       {
         question: 'Can you cover both Mahakaleshwar and Omkareshwar in 3 days?',
-        answer: 'Yes! Because Ujjain is just 55 km north of Indore and Omkareshwar is 77 km south of Indore, 3 days is the ideal timeframe to experience both temples without rushing.'
+        answer: 'Yes! Because Ujjain is located just 55 km north of Indore and Omkareshwar is 77 km south of Indore, 3 days is the golden timeframe to comfortably experience both sacred Jyotirlingas, attend Bhasma Aarti, and explore Indore’s food streets without rushing.'
+      },
+      {
+        question: 'How do I book Mahakaleshwar Bhasma Aarti in Ujjain?',
+        answer: 'Bhasma Aarti permits can be booked online through the official Mahakaleshwar Temple portal (shrimahakaleshwar.com) up to 30 to 60 days in advance. A limited number of on-arrival offline counter tickets are issued daily at 07:00 AM at the temple administrative office.'
+      },
+      {
+        question: 'What is the dress code for Mahakaleshwar and Omkareshwar sanctum darshan?',
+        answer: 'For entering the sanctum sanctorum (Garbhagriha) during Jalabhishek or Bhasma Aarti, traditional attire is mandatory: Men must wear a pure cotton/silk Dhoti and Kurta/Angavastram (unstitched lower garment); women must wear a Saree. Standard dress code applies for outer barricade darshan.'
+      },
+      {
+        question: 'How far is Omkareshwar from Ujjain and Indore?',
+        answer: 'Omkareshwar is approximately 77 km from Indore (around 2 to 2.5 hours by road) and 135 km from Ujjain (around 3.5 to 4 hours via Indore). Hiring a taxi from Indore provides the fastest and most flexible transit.'
+      },
+      {
+        question: 'Is VIP or fast-track darshan available at Mahakaleshwar and Omkareshwar?',
+        answer: 'Yes, both temples offer paid Shighra Darshan (fast-track queue) tickets (typically ₹250 to ₹750 per person) bookable at the temple ticket counters or via the official online portals, significantly reducing waiting time during weekends and festive periods.'
+      },
+      {
+        question: 'Which other temples should I not miss during this pilgrimage?',
+        answer: 'In Ujjain, visit Kal Bhairav (famous for liquor prasad), Harsiddhi Temple (one of the 51 Shaktipeeths), and the 900-meter Shri Mahakal Lok Corridor. In Omkareshwar, do not miss the 10th-century Mamleshwar Temple on the south bank and the evening Narmada Maha Aarti.'
       }
     ],
     seo: {
-      primaryKeyword: 'Ujjain Omkareshwar itinerary',
-      secondaryKeywords: ['MP Jyotirlinga tour', 'Mahakaleshwar Omkareshwar trip'],
-      title: '3-Day Ujjain & Omkareshwar Jyotirlinga Pilgrimage Guide',
-      metaDescription: 'Complete 3-day itinerary covering Mahakaleshwar in Ujjain and Omkareshwar on the Narmada. Darshan timings, Bhasma Aarti booking, and travel tips.'
+      primaryKeyword: 'Ujjain Omkareshwar itinerary 3 days',
+      secondaryKeywords: ['Ujjain Omkareshwar Jyotirlinga tour', 'Mahakaleshwar Omkareshwar trip plan'],
+      title: '3-Day Ujjain & Omkareshwar Itinerary: MP Jyotirlinga Tour Guide',
+      metaDescription: 'Complete 3-day itinerary covering Mahakaleshwar in Ujjain and Omkareshwar on the Narmada River. Includes Bhasma Aarti booking, VIP darshan tips, and travel routes.'
     }
   },
   {
@@ -262,14 +302,34 @@ export const travelItineraries: TravelItinerary[] = [
     faqs: [
       {
         question: 'How many safaris should you take to guarantee seeing a tiger?',
-        answer: 'While wild sightings are never 100% guaranteed, taking 6 or more safaris split between Kanha and Bandhavgarh yields an over 90% sighting success rate.'
+        answer: 'While wild sightings are never 100% guaranteed, taking 6 or more safaris split between Kanha and Bandhavgarh yields an over 92% cumulative tiger sighting success rate, while also offering regular encounters with leopards, sloth bears, and Barasingha.'
+      },
+      {
+        question: 'Which park has higher tiger sightings: Kanha or Bandhavgarh?',
+        answer: 'Bandhavgarh has the highest documented tiger density in India (frequent sightings in Tala and Magdhi zones). Kanha offers larger landscapes, vast open Sal meadows, rare Hardground Barasingha deer, and breathtaking wildlife photography backdrops. Combining both gives the ultimate Central India safari.'
+      },
+      {
+        question: 'How far in advance do I need to book MP wildlife safari permits?',
+        answer: 'Safari permits open 120 days in advance on the MP Forest Department portal (mponline.gov.in). Core zone permits sell out within minutes for peak season (November–April). We strongly recommend booking 90 to 120 days in advance.'
+      },
+      {
+        question: 'What is the driving time and road distance between Kanha and Bandhavgarh?',
+        answer: 'The distance is approximately 215 km and takes 4.5 to 5.5 hours via Mandla and Shahpura on well-paved state highways through scenic rural Madhya Pradesh landscapes.'
+      },
+      {
+        question: 'Are national parks in Madhya Pradesh open during the monsoon season?',
+        answer: 'Core zones of all MP tiger reserves are closed during the monsoon breeding season from July 1 to September 30. However, buffer zones (such as Dhamokhar at Bandhavgarh and Khatia buffer at Kanha) remain open year-round for safari drives and night excursions.'
+      },
+      {
+        question: 'What clothing and camera gear are recommended for a tiger safari?',
+        answer: 'Wear neutral, earthy tones (khaki, olive, brown, beige); avoid bright whites and neon colors. Morning winter drives can dip to 4°C, so layer up with windcheaters and fleece. For photography, a telephoto zoom lens (100–400mm or 200–600mm) paired with dust covers and beanbags is essential.'
       }
     ],
     seo: {
-      primaryKeyword: 'Madhya Pradesh wildlife tour',
-      secondaryKeywords: ['MP tiger safari itinerary', 'Kanha Bandhavgarh package'],
-      title: 'Madhya Pradesh Tiger Safari Circuit: Kanha & Bandhavgarh Guide',
-      metaDescription: 'Complete 6-day wildlife tiger safari itinerary for Madhya Pradesh connecting Kanha and Bandhavgarh National Parks. Sighting tips and permit booking.'
+      primaryKeyword: 'Madhya Pradesh tiger safari itinerary',
+      secondaryKeywords: ['Kanha Bandhavgarh wildlife package', 'best tiger safari circuit India'],
+      title: 'Madhya Pradesh Tiger Safari Itinerary: 6-Day Kanha & Bandhavgarh Tour',
+      metaDescription: 'Complete 6-day wildlife tiger safari itinerary for Madhya Pradesh connecting Kanha and Bandhavgarh National Parks. Sighting strategies, permit guide, and costs.'
     }
   },
   {
@@ -349,14 +409,30 @@ export const travelItineraries: TravelItinerary[] = [
     faqs: [
       {
         question: 'What is the best way to travel between Gwalior, Orchha, and Khajuraho?',
-        answer: 'Hiring a private vehicle from Gwalior is the most convenient way, as it allows you to stop at Datia Palace en route and stop directly at each monument.'
+        answer: 'Hiring a private chauffeured vehicle from Gwalior is the smoothest way, as it allows you to stop at Datia Palace en route and travel door-to-door between Orchha and Khajuraho along NH39 in about 3.5 hours.'
+      },
+      {
+        question: 'How many days are needed to thoroughly explore Khajuraho temples?',
+        answer: 'Two days is ideal: 1 full day for the celebrated Western Group of Temples and the evening Sound & Light show, and another half day for the quieter Eastern Jain temples, Southern Group (Duladeo), and the cascading basalt formations of nearby Raneh Falls.'
+      },
+      {
+        question: 'Is Orchha worth visiting between Gwalior and Khajuraho?',
+        answer: 'Absolutely! Orchha is often described by travelers as their favorite stop in Central India. It is remarkably peaceful, walkable, and features monumental 16th-century Bundela palaces (Jahangir Mahal, Raja Mahal), sacred Ram Raja Temple, and sunset cenotaphs (Chhatris) reflecting in the pristine Betwa River.'
+      },
+      {
+        question: 'What are the ticket fees and timings for the Western Group of Temples in Khajuraho?',
+        answer: 'The Western Group is open sunrise to sunset. Entry tickets cost ₹40 for Indian citizens and ₹600 for foreign visitors (free for children under 15). Tickets can be booked seamlessly via the ASI online portal (asi.payumoney.com) or at the monument gate.'
+      },
+      {
+        question: 'What is the best connection to return after completing the heritage tour?',
+        answer: 'Khajuraho has its own airport with direct domestic flights to Delhi, as well as Khajuraho Railway Station with daily express and Vande Bharat trains connecting to Delhi (Hazrat Nizamuddin), Agra, and Varanasi.'
       }
     ],
     seo: {
-      primaryKeyword: 'Madhya Pradesh heritage tour',
-      secondaryKeywords: ['Gwalior Orchha Khajuraho route', 'MP Golden Triangle'],
-      title: 'MP Heritage Triangle: Gwalior, Orchha & Khajuraho Route',
-      metaDescription: 'Plan an unforgettable 5-day heritage trip through northern Madhya Pradesh. Complete guide to Gwalior Fort, Orchha palaces, Betwa Chhatris, and Khajuraho temples.'
+      primaryKeyword: 'Madhya Pradesh heritage tour 5 days',
+      secondaryKeywords: ['Gwalior Orchha Khajuraho itinerary', 'MP Golden Triangle tour'],
+      title: '5-Day Madhya Pradesh Heritage Tour: Gwalior, Orchha & Khajuraho',
+      metaDescription: 'Plan an unforgettable 5-day heritage trip through northern Madhya Pradesh. Complete guide to Gwalior Fort, Datia Palace, Orchha, and Khajuraho temples.'
     }
   }
 ];

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { WildlifePark } from '../types';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { FaqSection } from '../components/FaqSection';
-import { updatePageSeo } from '../utils/seo';
+import { updatePageSeo, PRIMARY_CANONICAL_DOMAIN } from '../utils/seo';
 import {
   Compass,
   Calendar,
@@ -41,20 +41,65 @@ export const WildlifeDetailPage: React.FC<WildlifeDetailPageProps> = ({
   const wish = isWishlisted(park.id);
 
   useEffect(() => {
+    const canonicalUrl = `${PRIMARY_CANONICAL_DOMAIN}/wildlife/${park.slug}`;
+    const absoluteImage = `${PRIMARY_CANONICAL_DOMAIN}${park.image}`;
+
     const schemaData = {
       '@context': 'https://schema.org',
-      '@type': 'TouristAttraction',
-      name: park.name,
-      description: park.summary,
-      image: park.image,
-      address: {
-        '@type': 'PostalAddress',
-        addressRegion: 'Madhya Pradesh',
-        addressCountry: 'IN',
-      },
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Wildlife & National Parks',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/wildlife`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: park.name,
+              item: canonicalUrl,
+            },
+          ],
+        },
+        {
+          '@type': 'TouristAttraction',
+          '@id': `${canonicalUrl}#attraction`,
+          name: park.name,
+          description: park.summary,
+          image: absoluteImage,
+          url: canonicalUrl,
+          touristType: 'Wildlife Sanctuary / National Park',
+          address: {
+            '@type': 'PostalAddress',
+            addressRegion: 'Madhya Pradesh',
+            addressCountry: 'IN',
+          },
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': `${canonicalUrl}#faq`,
+          mainEntity: park.faqs.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.answer,
+            },
+          })),
+        },
+      ],
     };
 
-    updatePageSeo(park.seo, `/wildlife/${park.slug}`, schemaData);
+    updatePageSeo(park.seo, `/wildlife/${park.slug}`, schemaData, park.image);
     window.scrollTo(0, 0);
   }, [park]);
 

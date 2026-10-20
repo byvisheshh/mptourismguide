@@ -24,7 +24,7 @@ import { destinations } from './data/destinations';
 import { wildlifeParks } from './data/wildlife';
 import { foodItems } from './data/foods';
 import { travelItineraries } from './data/itineraries';
-import { updatePageSeo } from './utils/seo';
+import { updatePageSeo, PRIMARY_CANONICAL_DOMAIN } from './utils/seo';
 
 export default function App() {
   const [currentPath, setCurrentPath] = useState<string>(() => {
@@ -134,16 +134,83 @@ export default function App() {
         '/',
         {
           '@context': 'https://schema.org',
-          '@type': 'WebSite',
-          name: 'MP Tourism — The Heart of Incredible India',
-          url: 'https://mptourismguide.vercel.app/',
-          description:
-            'Explore Madhya Pradesh, the Heart of India. Discover Jyotirlingas, Khajuraho temples, Bandhavgarh tigers, UNESCO heritage sites, and authentic Malwa cuisine.',
-          potentialAction: {
-            '@type': 'SearchAction',
-            target: 'https://mptourismguide.vercel.app/destinations?q={search_term_string}',
-            'query-input': 'required name=search_term_string',
-          },
+          '@graph': [
+            {
+              '@type': 'WebSite',
+              '@id': `${PRIMARY_CANONICAL_DOMAIN}/#website`,
+              name: 'MP Tourism Guide',
+              alternateName: 'Madhya Pradesh Tourism — The Heart of Incredible India',
+              url: `${PRIMARY_CANONICAL_DOMAIN}/`,
+              potentialAction: {
+                '@type': 'SearchAction',
+                target: `${PRIMARY_CANONICAL_DOMAIN}/destinations?q={search_term_string}`,
+                'query-input': 'required name=search_term_string',
+              },
+            },
+            {
+              '@type': 'Organization',
+              '@id': `${PRIMARY_CANONICAL_DOMAIN}/#organization`,
+              name: 'MP Tourism Guide',
+              url: `${PRIMARY_CANONICAL_DOMAIN}/`,
+              logo: `${PRIMARY_CANONICAL_DOMAIN}/favicon.svg`,
+              description:
+                'Official independent guide to Madhya Pradesh tourism, covering UNESCO World Heritage monuments, sacred Jyotirlingas, national park tiger safaris, and authentic Malwa cuisine.',
+            },
+            {
+              '@type': 'TouristDestination',
+              '@id': `${PRIMARY_CANONICAL_DOMAIN}/#destination`,
+              name: 'Madhya Pradesh',
+              description:
+                'The Heart of Incredible India, featuring UNESCO monuments, 2 sacred Shiva Jyotirlingas, 785+ wild Bengal tigers, and millennia of living history.',
+              touristType: ['Spiritual Tourism', 'Heritage Tourism', 'Wildlife Safaris', 'Culinary Tours'],
+            },
+            {
+              '@type': 'FAQPage',
+              '@id': `${PRIMARY_CANONICAL_DOMAIN}/#faq`,
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'Why is Madhya Pradesh called the Heart of India?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Geographically situated in the center of the Indian subcontinent, Madhya Pradesh is fondly known as the Heart of India. It represents the cultural heart where traditions coalesce — home to 3 UNESCO World Heritage Sites, two sacred Shiva Jyotirlingas, 785+ Bengal tigers, and millennia of unbroken art and history.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Which are the two sacred Jyotirlingas located in Madhya Pradesh?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Madhya Pradesh is blessed with two sacred Shiva Jyotirlingas: Mahakaleshwar in the ancient city of Ujjain (the only south-facing Jyotirlinga, famous for the dawn Bhasma Aarti) and Omkareshwar situated on the sacred island of Mandhata in the holy Narmada River.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What is the best time of year to visit Madhya Pradesh?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'The ideal time to visit is from October to March when temperatures are mild and pleasant (10°C to 28°C), making heritage site explorations and wildlife safaris comfortable.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Which national parks are best for tiger sightings in Madhya Pradesh?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Bandhavgarh National Park has the highest tiger density in India, making it the top choice for tiger photography. Kanha Tiger Reserve is famous for its vast Sal meadows and rare Hardground Barasingha. Pench National Park offers easy accessibility and open teakwood visibility.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What are the must-try regional dishes in Madhya Pradesh?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Do not miss authentic steam-cooked Indore Poha with Ratlami sev and hot saffron Jalebi, traditional Dal Bafla drenched in pure desi ghee, midnight street food at Sarafa Bazaar, and royal slow-cooked Bhopali mutton biryani.',
+                  },
+                },
+              ],
+            },
+          ],
         }
       );
 
@@ -170,10 +237,41 @@ export default function App() {
         '/destinations',
         {
           '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Places to Visit in Madhya Pradesh | All 12+ Destinations',
-          description:
-            'Explore all top tourist destinations in Madhya Pradesh: Khajuraho, Sanchi, Omkareshwar, Ujjain, Gwalior Fort, Orchha, Pachmarhi, and Mandu.',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Destinations',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/destinations`,
+                },
+              ],
+            },
+            {
+              '@type': 'CollectionPage',
+              name: 'Places to Visit in Madhya Pradesh | All 12+ Destinations',
+              description:
+                'Explore all top tourist destinations in Madhya Pradesh: Khajuraho, Sanchi, Omkareshwar, Ujjain, Gwalior Fort, Orchha, Pachmarhi, and Mandu.',
+              mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: destinations.map((d, idx) => ({
+                  '@type': 'ListItem',
+                  position: idx + 1,
+                  name: d.name,
+                  url: `${PRIMARY_CANONICAL_DOMAIN}/destinations/${d.slug}`,
+                  image: `${PRIMARY_CANONICAL_DOMAIN}${d.image}`,
+                })),
+              },
+            },
+          ],
         }
       );
 
@@ -216,10 +314,41 @@ export default function App() {
         '/wildlife',
         {
           '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Wildlife & Tiger Reserves of Madhya Pradesh | Safari Guide',
-          description:
-            'Explore India’s Tiger State with 785+ Bengal tigers. Complete guide to Bandhavgarh, Kanha, Pench, and Satpura national park safaris and permits.',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Wildlife',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/wildlife`,
+                },
+              ],
+            },
+            {
+              '@type': 'CollectionPage',
+              name: 'Wildlife & Tiger Reserves of Madhya Pradesh | Safari Guide',
+              description:
+                'Explore India’s Tiger State with 785+ Bengal tigers. Complete guide to Bandhavgarh, Kanha, Pench, and Satpura national park safaris and permits.',
+              mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: wildlifeParks.map((p, idx) => ({
+                  '@type': 'ListItem',
+                  position: idx + 1,
+                  name: p.name,
+                  url: `${PRIMARY_CANONICAL_DOMAIN}/wildlife/${p.slug}`,
+                  image: `${PRIMARY_CANONICAL_DOMAIN}${p.image}`,
+                })),
+              },
+            },
+          ],
         }
       );
 
@@ -261,10 +390,41 @@ export default function App() {
         '/food-and-cuisine',
         {
           '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Traditional Food of Madhya Pradesh | Malwa Cuisine Guide',
-          description:
-            'Discover the authentic flavours of Madhya Pradesh: Indore poha jalebi, traditional dal bafla, Sarafa night market delicacies, and royal Bhopali biryani.',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Food & Cuisine',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/food-and-cuisine`,
+                },
+              ],
+            },
+            {
+              '@type': 'CollectionPage',
+              name: 'Traditional Food of Madhya Pradesh | Malwa Cuisine Guide',
+              description:
+                'Discover the authentic flavours of Madhya Pradesh: Indore poha jalebi, traditional dal bafla, Sarafa night market delicacies, and royal Bhopali biryani.',
+              mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: foodItems.map((f, idx) => ({
+                  '@type': 'ListItem',
+                  position: idx + 1,
+                  name: f.name,
+                  url: `${PRIMARY_CANONICAL_DOMAIN}/food-and-cuisine/${f.slug}`,
+                  image: `${PRIMARY_CANONICAL_DOMAIN}${f.image}`,
+                })),
+              },
+            },
+          ],
         }
       );
 
@@ -300,10 +460,31 @@ export default function App() {
         '/culture-and-festivals',
         {
           '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Culture & Festivals of Madhya Pradesh | Khajuraho Dance & Handlooms',
-          description:
-            'Experience the rich cultural heritage of MP: Khajuraho Dance Festival, Tansen Samaroh, Bhagoria tribal festival, and Chanderi/Maheshwari handloom weaving.',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Culture & Festivals',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/culture-and-festivals`,
+                },
+              ],
+            },
+            {
+              '@type': 'CollectionPage',
+              name: 'Culture & Festivals of Madhya Pradesh | Khajuraho Dance & Handlooms',
+              description:
+                'Experience the rich cultural heritage of MP: Khajuraho Dance Festival, Tansen Samaroh, Bhagoria tribal festival, and Chanderi/Maheshwari handloom weaving.',
+            },
+          ],
         }
       );
 
@@ -323,10 +504,41 @@ export default function App() {
         '/travel-guides',
         {
           '@context': 'https://schema.org',
-          '@type': 'CollectionPage',
-          name: 'Madhya Pradesh Travel Itineraries | Curated Trip Plans',
-          description:
-            'Curated itineraries for Madhya Pradesh: 7-day grand circuit, 3-day Jyotirlinga pilgrimage, 6-day tiger safari, and 5-day northern heritage triangle.',
+          '@graph': [
+            {
+              '@type': 'BreadcrumbList',
+              itemListElement: [
+                {
+                  '@type': 'ListItem',
+                  position: 1,
+                  name: 'Home',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+                },
+                {
+                  '@type': 'ListItem',
+                  position: 2,
+                  name: 'Travel Guides',
+                  item: `${PRIMARY_CANONICAL_DOMAIN}/travel-guides`,
+                },
+              ],
+            },
+            {
+              '@type': 'CollectionPage',
+              name: 'Madhya Pradesh Travel Itineraries | Curated Trip Plans',
+              description:
+                'Curated itineraries for Madhya Pradesh: 7-day grand circuit, 3-day Jyotirlinga pilgrimage, 6-day tiger safari, and 5-day northern heritage triangle.',
+              mainEntity: {
+                '@type': 'ItemList',
+                itemListElement: travelItineraries.map((t, idx) => ({
+                  '@type': 'ListItem',
+                  position: idx + 1,
+                  name: t.title,
+                  url: `${PRIMARY_CANONICAL_DOMAIN}/travel-guides/${t.slug}`,
+                  image: `${PRIMARY_CANONICAL_DOMAIN}${t.image}`,
+                })),
+              },
+            },
+          ],
         }
       );
 

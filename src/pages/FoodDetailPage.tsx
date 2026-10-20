@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { FoodItem } from '../types';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { FaqSection } from '../components/FaqSection';
-import { updatePageSeo } from '../utils/seo';
+import { updatePageSeo, PRIMARY_CANONICAL_DOMAIN } from '../utils/seo';
 import {
   Utensils,
   MapPin,
@@ -38,19 +38,64 @@ export const FoodDetailPage: React.FC<FoodDetailPageProps> = ({
   const wish = isWishlisted(food.id);
 
   useEffect(() => {
+    const canonicalUrl = `${PRIMARY_CANONICAL_DOMAIN}/food-and-cuisine/${food.slug}`;
+    const absoluteImage = `${PRIMARY_CANONICAL_DOMAIN}${food.image}`;
+
     const schemaData = {
       '@context': 'https://schema.org',
-      '@type': 'Recipe',
-      name: food.name,
-      description: food.summary,
-      image: food.image,
-      recipeCuisine: 'Indian - Madhya Pradesh',
-      suitableForDiet: food.dietaryInfo.isVegetarian
-        ? 'https://schema.org/VegetarianDiet'
-        : undefined,
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            {
+              '@type': 'ListItem',
+              position: 1,
+              name: 'Home',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 2,
+              name: 'Food & Cuisine',
+              item: `${PRIMARY_CANONICAL_DOMAIN}/food-and-cuisine`,
+            },
+            {
+              '@type': 'ListItem',
+              position: 3,
+              name: food.name,
+              item: canonicalUrl,
+            },
+          ],
+        },
+        {
+          '@type': 'Recipe',
+          '@id': `${canonicalUrl}#recipe`,
+          name: food.name,
+          description: food.summary,
+          image: absoluteImage,
+          url: canonicalUrl,
+          recipeCuisine: 'Indian - Madhya Pradesh',
+          recipeCategory: food.category,
+          suitableForDiet: food.dietaryInfo.isVegetarian
+            ? 'https://schema.org/VegetarianDiet'
+            : undefined,
+        },
+        {
+          '@type': 'FAQPage',
+          '@id': `${canonicalUrl}#faq`,
+          mainEntity: (food.faqs || []).map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: {
+              '@type': 'Answer',
+              text: f.answer,
+            },
+          })),
+        },
+      ],
     };
 
-    updatePageSeo(food.seo, `/food-and-cuisine/${food.slug}`, schemaData);
+    updatePageSeo(food.seo, `/food-and-cuisine/${food.slug}`, schemaData, food.image);
     window.scrollTo(0, 0);
   }, [food]);
 
