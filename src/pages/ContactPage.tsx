@@ -25,7 +25,14 @@ export const ContactPage: React.FC<ContactPageProps> = ({ onNavigate }) => {
         metaDescription:
           'Official contact directories and traveler assistance for Madhya Pradesh Tourism. Verified state tourist helpline numbers and inquiry assistance.',
       },
-      '/contact'
+      '/contact',
+      {
+        '@context': 'https://schema.org',
+        '@type': 'ContactPage',
+        name: 'Contact & Tourist Helplines | MP Tourism Guide',
+        description:
+          'Official contact directories and traveler assistance for Madhya Pradesh Tourism. Verified state tourist helpline numbers and inquiry assistance.',
+      }
     );
     window.scrollTo(0, 0);
   }, []);

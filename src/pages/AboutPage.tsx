@@ -17,7 +17,14 @@ export const AboutPage: React.FC<AboutPageProps> = ({ onNavigate }) => {
         metaDescription:
           'Learn about the Madhya Pradesh Tourism comprehensive travel portal. Committed to verified historical facts, authentic photography, and cultural travel planning.',
       },
-      '/about'
+      '/about',
+      {
+        '@context': 'https://schema.org',
+        '@type': 'AboutPage',
+        name: 'About MP Tourism Guide: Mission & Travel Information',
+        description:
+          'Learn about the Madhya Pradesh Tourism comprehensive travel portal. Committed to verified historical facts, authentic photography, and cultural travel planning.',
+      }
     );
     window.scrollTo(0, 0);
   }, []);
